@@ -1,0 +1,205 @@
+:root {
+    --calculator-bg-color: #8E8E8E;
+    --main-display-color: #4C4C4C;
+    --top-panel-color: #D6D6D6;
+    --number-button-color: #EEE;
+    --sign-color: #FF8E00;
+    --right-column-color: #FFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.Calculator {
+    background-color: var(--calculator-bg-color);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    width: 233px;
+    height: 320px;
+    display: grid;
+    border-radius: 5px;
+    grid-template-rows: 78px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "hud hud hud hud"
+        "reset sign percent divide"
+        "seven eight nine multiply"
+        "four five six subtract"
+        "one two three add"
+        "zero zero decimal equal";
+}
+
+.reset, .sign-toggler, .percent,
+.num-zero, .num-one, .num-two,
+.num-three, .num-four, .num-five,
+.num-six, .num-seven, .num-eight,
+.num-nine, .sign-decimal {
+    font-weight: 250;
+}
+
+.reset, .sign-toggler, .percent,
+.num-zero, .num-one, .num-two, .num-three,
+.num-four, .num-five, .num-six, .num-seven,
+.num-eight, .num-nine, .sign-divide, .sign-multiply,
+.sign-subtract, .sign-add, .sign-equal, .sign-decimal {
+    margin-left: 1px;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sign-divide, .sign-multiply,
+.sign-subtract, .sign-add, .sign-equal {
+    font-size: 28px;
+}
+
+.display, .sign-divide, .sign-multiply,
+.sign-subtract, .sign-add, .sign-equal {
+    font-weight: 100;
+    color: var(--right-column-color);
+}
+
+.reset, .num-seven, .num-four,
+.num-one, .num-zero {
+    margin-left: 0;
+}
+
+.num-one, .num-two, .num-three,
+.num-four, .num-five, .num-six,
+.num-seven, .num-eight, .num-nine,
+.num-zero-wrapper, .sign-decimal {
+    background-color: var(--number-button-color);
+}
+
+.reset, .sign-toggler, .percent {
+    background-color: var(--top-panel-color);
+}
+
+.sign-divide, .sign-multiply, .sign-subtract,
+.sign-add, .sign-equal {
+    background-color: var(--sign-color);
+}
+
+
+.display-wrapper {
+    display: grid;
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--main-display-color);
+    grid-area: hud;
+}
+
+.num-zero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: zero;
+    margin-top: 1px;
+}
+
+.display {
+    font-size: 50px;
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.reset {
+    grid-area: reset;
+}
+
+.sign-toggler {
+    display: flex;
+    grid-area: sign;
+}
+
+.percent {
+    grid-area: percent;
+}
+
+.num-zero {
+    grid-column: 1;
+    border-bottom-left-radius: 0.2em;
+}
+
+.num-one {
+    grid-area: one;
+}
+
+.num-two {
+    grid-area: two;
+}
+
+.num-three {
+    grid-area: three;
+}
+
+.num-four {
+    grid-area: four;
+}
+
+.num-five {
+    grid-area: five;
+}
+
+.num-six {
+    grid-area: six;
+}
+.num-seven {
+    grid-area: seven;
+}
+
+.num-eight {
+    grid-area: eight;
+}
+
+.num-nine {
+    grid-area: nine;
+}
+
+.sign-divide {
+    grid-area: divide;
+}
+
+.sign-multiply {
+    grid-area: multiply;
+}
+
+.sign-subtract {
+    grid-area: subtract;
+}
+
+.sign-add {
+    grid-area: add;
+}
+.sign-equal {
+    grid-area: equal;
+    border-bottom-right-radius: 0.2em;
+}
+
+.sign-decimal {
+    grid-area: decimal;
+}
+
+.reset:active, .sign-toggler:active, .percent:active,
+.num-zero-wrapper:active, .num-one:active, .num-two:active,
+.num-three:active, .num-four:active, .num-five:active,
+.num-six:active, .num-seven:active, .num-eight:active,
+.num-nine:active, .sign-decimal:active {
+    background-color: #B2B2B2;
+}
+
+.sign-divide:active, .sign-multiply:active, .sign-subtract:active,
+.sign-add:active, .sign-equal:active {
+    color: #555;
+    background-color: #D07000;
+}
