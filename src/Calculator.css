@@ -21,8 +21,8 @@
 .Calculator {
     background-color: var(--calculator-bg-color);
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
-    width: 233px;
-    height: 320px;
+    width: 210px;
+    height: 291px;
     display: grid;
     border-radius: 5px;
     grid-template-rows: 78px 1fr 1fr 1fr 1fr 1fr;
