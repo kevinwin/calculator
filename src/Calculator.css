@@ -5,6 +5,7 @@
     --number-button-color: #EEE;
     --sign-color: #FF8E00;
     --right-column-color: #FFF;
+    --outer-border-color: #555;
 }
 
 * {
@@ -25,7 +26,7 @@
     height: 291px;
     display: grid;
     border-radius: 5px;
-    grid-template-rows: 78px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 72px 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "hud hud hud hud"
@@ -69,8 +70,13 @@
 }
 
 .reset, .num-seven, .num-four,
-.num-one, .num-zero {
+.num-one, .num-zero-wrapper {
     margin-left: 0;
+    border-left: 1px solid var(--outer-border-color);
+}
+
+.num-zero-wrapper, .sign-decimal, .sign-equal {
+    border-bottom: 1px solid var(--outer-border-color);
 }
 
 .num-one, .num-two, .num-three,
@@ -87,6 +93,7 @@
 .sign-divide, .sign-multiply, .sign-subtract,
 .sign-add, .sign-equal {
     background-color: var(--sign-color);
+    border-right: 1px solid var(--outer-border-color);
 }
 
 
@@ -105,6 +112,7 @@
     grid-template-columns: 1fr 1fr;
     grid-area: zero;
     margin-top: 1px;
+    border-bottom-left-radius: 0.2em;
 }
 
 .display {
@@ -128,7 +136,6 @@
 
 .num-zero {
     grid-column: 1;
-    border-bottom-left-radius: 0.2em;
 }
 
 .num-one {
