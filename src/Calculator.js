@@ -4,7 +4,7 @@ import './Calculator.css';
 const Calculator = (props) => (
   <div className="Calculator">
     <div className="display-wrapper">
-      <div className="display">0</div>
+      <div className="display">{props.total}</div>
     </div>
     <div className="reset">AC</div>
     <div className="sign-toggler">&plusmn;</div>
