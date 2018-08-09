@@ -99,6 +99,7 @@
 
 .display-wrapper {
     display: grid;
+    position: relative;
     border-top-left-radius: 0.2em;
     border-top-right-radius: 0.2em;
     grid-template-rows: 1fr 1fr;
@@ -117,8 +118,9 @@
 
 .display {
     font-size: 42px;
-    grid-column: 4;
-    grid-row: 2;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
 }
 
 .reset {
