@@ -25,7 +25,6 @@
     width: 210px;
     height: 291px;
     display: grid;
-    border-radius: 5px;
     grid-template-rows: 72px 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
@@ -35,6 +34,11 @@
         "four five six subtract"
         "one two three add"
         "zero zero decimal equal";
+}
+
+html, body, #root, .App, .Calculator {
+    height: 100%;
+    width: 100%;
 }
 
 .reset, .sign-toggler, .percent,
@@ -100,8 +104,6 @@
 .display-wrapper {
     display: grid;
     position: relative;
-    border-top-left-radius: 0.2em;
-    border-top-right-radius: 0.2em;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(4, 1fr);
     background-color: var(--main-display-color);
@@ -113,7 +115,6 @@
     grid-template-columns: 1fr 1fr;
     grid-area: zero;
     margin-top: 1px;
-    border-bottom-left-radius: 0.2em;
 }
 
 .display {
@@ -121,6 +122,7 @@
     position: absolute;
     bottom: 0;
     right: 15px;
+    transform-origin: right;
 }
 
 .reset {
@@ -192,11 +194,14 @@
 }
 .sign-equal {
     grid-area: equal;
-    border-bottom-right-radius: 0.2em;
 }
 
 .sign-decimal {
     grid-area: decimal;
+}
+
+.infinity.display {
+    font-size: 30px;
 }
 
 .reset:active, .sign-toggler:active, .percent:active,

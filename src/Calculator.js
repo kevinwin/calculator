@@ -2,15 +2,17 @@ import React from 'react';
 import './Calculator.css';
 
 const Calculator = (props) => {
-  const { total, memory, handleNumClick, handleResetClick, handlePercentClick, handleToggleSignClick } = props;
+  const { total, memory, scale, handleNumClick, handleResetClick, handlePercentClick, handleToggleSignClick, handleOperation } = props;
+  const normalDisplay = <div className="display" ref={props.displayRef} style={{transform: `scale(${scale},${scale})`}}>{total}</div>;
+  const infinityDisplay = <div className="display infinity" ref={props.displayRef}>Not a number</div>;
   return (
     <div className="Calculator">
       <div className="display-wrapper">
-        <div className="display">{total}</div>
+        {/-?Infinity/.test(total) ? infinityDisplay : normalDisplay}
       </div>
-      <div className="reset" onClick={ () => handleResetClick() }>{memory ? 'C' : 'AC'}</div>
-      <div className="sign-toggler" onClick={ () => handleToggleSignClick() }>&plusmn;</div>
-      <div className="percent" onClick={() => handlePercentClick() }>%</div>
+      <div className="reset" title="Clear (Esc)" onClick={ () => handleResetClick() }>{memory ? 'C' : 'AC'}</div>
+      <div className="sign-toggler" title="Negate the displayed value (or press Option-Minus [-])" onClick={ () => handleToggleSignClick() }>&plusmn;</div>
+      <div className="percent" title="Percent (or press %)" onClick={() => handlePercentClick() }>%</div>
       <div className="num-zero-wrapper" onClick={ () => handleNumClick('0') }>
         <div className="num-zero">0</div>
       </div>
@@ -23,11 +25,11 @@ const Calculator = (props) => {
       <div className="num-seven" onClick={ () => handleNumClick('7') }>7</div>
       <div className="num-eight" onClick={ () => handleNumClick('8') }>8</div>
       <div className="num-nine" onClick={ () => handleNumClick('9') }>9</div>
-      <div className="sign-divide">&divide;</div>
-      <div className="sign-multiply">&times;</div>
-      <div className="sign-subtract">-</div>
-      <div className="sign-add">+</div>
-      <div className="sign-equal">=</div>
+      <div className="sign-divide" title="Divide (or press /)" onClick={ () => handleOperation('/') }>&divide;</div>
+      <div className="sign-multiply" title="Multiply (or press *)" onClick={ () => handleOperation('*') }>&times;</div>
+      <div className="sign-subtract" title="Subtract (or press -)" onClick={ () => handleOperation('-') }>-</div>
+      <div className="sign-add" title="Add (or press +)" onClick={ () => handleOperation('+') }>+</div>
+      <div className="sign-equal" title="Equal (or press Return)" onClick={ () => handleOperation('=') }>=</div>
       <div className="sign-decimal" onClick={ () => handleNumClick('.') }>.</div>
     </div>
   );
