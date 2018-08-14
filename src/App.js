@@ -97,6 +97,18 @@ class App extends Component {
       })
     }
 
+    if (lastLeftOperand && lastOperator && operator === '-' && !lastRightOperand) {
+      return this.setState((prevState) => ({
+        partialCalculation: prevState.partialCalculation + operator,
+        lastClicked: '-',
+      }))
+    } else if (lastLeftOperand && lastOperator && /[\/+*]/.test(operator) && !lastRightOperand) {
+      return this.setState((prevState) => ({
+        partialCalculation: `${lastLeftOperand}${operator}`,
+        lastClicked: operator,
+      }))
+    }
+
     if (!lastOperator || !lastRightOperand) {
       return this.setState((prevState) => {
         const justClickedEqualFromOperator = /[\/*.+-]/.test(lastOperator) && operator === '=';
@@ -141,10 +153,10 @@ class App extends Component {
 
   render() {
     const { updateTotal, resetTotal, divideBy100, toggleSign, performOperation } = this;
-    const { total, partialCalculation, scale } = this.state;
+    const { total, partialCalculation, scale, lastClicked } = this.state;
     return (
       <div className="App">
-        <Calculator total={total} memory={partialCalculation} scale={scale} handleNumClick={updateTotal} handleResetClick={resetTotal} handlePercentClick={divideBy100} handleToggleSignClick={toggleSign} handleOperation={performOperation} displayRef={node => this.node = node}/>
+        <Calculator total={total} memory={partialCalculation} scale={scale} lastClicked={lastClicked} handleNumClick={updateTotal} handleResetClick={resetTotal} handlePercentClick={divideBy100} handleToggleSignClick={toggleSign} handleOperation={performOperation} displayRef={node => this.node = node}/>
       </div>
       );
   }

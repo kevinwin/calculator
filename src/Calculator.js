@@ -2,7 +2,7 @@ import React from 'react';
 import './Calculator.css';
 
 const Calculator = (props) => {
-  const { total, memory, scale, handleNumClick, handleResetClick, handlePercentClick, handleToggleSignClick, handleOperation } = props;
+  const { total, memory, scale, lastClicked, handleNumClick, handleResetClick, handlePercentClick, handleToggleSignClick, handleOperation } = props;
   const normalDisplay = <div className="display" ref={props.displayRef} style={{transform: `scale(${scale},${scale})`}}>{total}</div>;
   const infinityDisplay = <div className="display infinity" ref={props.displayRef}>Not a number</div>;
   return (
@@ -25,10 +25,10 @@ const Calculator = (props) => {
       <div className="num-seven" onClick={ () => handleNumClick('7') }>7</div>
       <div className="num-eight" onClick={ () => handleNumClick('8') }>8</div>
       <div className="num-nine" onClick={ () => handleNumClick('9') }>9</div>
-      <div className="sign-divide" title="Divide (or press /)" onClick={ () => handleOperation('/') }>&divide;</div>
-      <div className="sign-multiply" title="Multiply (or press *)" onClick={ () => handleOperation('*') }>&times;</div>
-      <div className="sign-subtract" title="Subtract (or press -)" onClick={ () => handleOperation('-') }>-</div>
-      <div className="sign-add" title="Add (or press +)" onClick={ () => handleOperation('+') }>+</div>
+      <div className="sign-divide" style={lastClicked === '/' ? {outline: `5px auto rgb(59,153,252)`} : {}} title="Divide (or press /)" onClick={ () => handleOperation('/') }>&divide;</div>
+      <div className="sign-multiply" style={lastClicked === '*' ? {outline: `5px auto rgb(59,153,252)`} : {}}  tabindex="0" title="Multiply (or press *)" onClick={ () => handleOperation('*') }>&times;</div>
+      <div className="sign-subtract" style={lastClicked === '-' ? {outline: `5px auto rgb(59,153,252)`} : {}} tabindex="0" title="Subtract (or press -)" onClick={ () => handleOperation('-') }>-</div>
+      <div className="sign-add" style={lastClicked === '+' ? {outline: `5px auto rgb(59,153,252)`} : {}} tabindex="0" title="Add (or press +)" onClick={ () => handleOperation('+') }>+</div>
       <div className="sign-equal" title="Equal (or press Return)" onClick={ () => handleOperation('=') }>=</div>
       <div className="sign-decimal" onClick={ () => handleNumClick('.') }>.</div>
     </div>
